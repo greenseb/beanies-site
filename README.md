@@ -43,7 +43,3 @@ The form posts to a Formspree-style endpoint.
 3. Restart `pnpm dev`. For a hosted build, set the same variable in your host's environment settings before building.
 
 Until it is set, the form shows a "not connected" message instead of sending.
-
-## Old static site
-
-The original HTML/CSS/JS version is kept in `legacy/` for reference. It isn't part of the build.
