@@ -3,7 +3,6 @@ import { ButtonLink } from "../ui";
 import {
   Actions,
   Copy,
-  Eyebrow,
   HeroPhoto,
   Lead,
   Section,
