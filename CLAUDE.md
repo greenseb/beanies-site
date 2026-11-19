@@ -21,6 +21,6 @@ Vite + React + TypeScript + styled-components, managed with pnpm. See README.md 
 ## Commits
 
 - Only commit when asked.
-- Write the subject line as a short imperative summary of what changed (e.g. "Anchor hero photo crop to the top"), under about 70 characters. Not "Update files" or "Fix stuff".
+- Write the subject line as a short imperative summary of what changed (e.g. "Anchor hero photo crop to the top"), under about 70 characters. Not "Update files" or "Fix stuff". Include a prefix like "fix:" or "feat:" depending on the change.
 - Add a body when the change isn't obvious from the subject: say what changed and why, in a few lines or bullets.
 - Keep unrelated changes in separate commits.
