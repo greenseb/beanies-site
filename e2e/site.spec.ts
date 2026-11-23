@@ -74,7 +74,7 @@ test.describe("full site", () => {
   test.describe("sticky booking bar (phone)", () => {
     test.use({ viewport: { width: 390, height: 800 } });
 
-    test("only shows once the hero buttons have scrolled out of view", async ({ page }) => {
+    test("shows between the hero buttons and the booking form", async ({ page }) => {
       await page.goto("/");
       // The bar is the last #book link in the DOM (after the hero and menu ones). Not getByRole,
       // which skips it while hidden and would match the hero button instead.
@@ -85,7 +85,10 @@ test.describe("full site", () => {
       await expect(barLink).toBeVisible();
       // Floats well clear of the bottom edge (taps right at the edge are caught by iOS Safari's toolbar)
       const box = await barLink.boundingBox();
-      expect(page.viewportSize()!.height - (box!.y + box!.height)).toBeGreaterThanOrEqual(80);
+      expect(page.viewportSize()!.height - (box!.y + box!.height)).toBeGreaterThanOrEqual(48);
+
+      await page.locator("#book").scrollIntoViewIfNeeded();
+      await expect(barLink).toBeHidden();
 
       await page.evaluate(() => window.scrollTo(0, 0));
       await expect(barLink).toBeHidden();
