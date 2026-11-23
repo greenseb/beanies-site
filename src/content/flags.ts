@@ -3,4 +3,6 @@
 export const flags = {
   // true shows only the logo and "Coming soon"; false shows the full site.
   comingSoon: false,
+  // Floating "Request a booking" button on phones. Off: on iPhone Safari it took two taps.
+  floatingBookingButton: false,
 } satisfies Record<string, boolean>;

@@ -72,6 +72,7 @@ test.describe("full site", () => {
   });
 
   test.describe("sticky booking bar (phone)", () => {
+    test.skip(!flags.floatingBookingButton, "Floating booking button is off");
     test.use({ viewport: { width: 390, height: 800 } });
 
     test("shows between the hero buttons and the booking form", async ({ page }) => {
@@ -96,6 +97,14 @@ test.describe("full site", () => {
       await page.evaluate(() => window.scrollTo(0, 0));
       await expect(barLink).toBeHidden();
     });
+  });
+
+  test("has no floating booking button while the flag is off", async ({ page }) => {
+    test.skip(flags.floatingBookingButton, "Floating booking button is on");
+    await page.setViewportSize({ width: 390, height: 800 });
+    await page.goto("/");
+    // Only the hero and menu links point at the form; a floating button would be a third
+    await expect(page.locator('a[href="#book"]')).toHaveCount(2);
   });
 
   test.describe("booking form", () => {
