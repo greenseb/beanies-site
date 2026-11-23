@@ -1,5 +1,13 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import { ButtonLink } from "../ui";
+
+// Room at the end of the page so the floating button doesn't cover the last content. Lives here,
+// not in GlobalStyle, so pages without the button (e.g. coming soon) have nothing extra to scroll.
+export const BarSpace = createGlobalStyle`
+  @media ${({ theme }) => theme.mobile} {
+    body { padding-bottom: 80px; }
+  }
+`;
 
 // Floating button, not a full-width strip pinned to the bottom edge: on iOS Safari the first
 // tap on anything pinned at the bottom only expanded the toolbar, so it sits well above it.

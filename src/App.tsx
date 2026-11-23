@@ -25,7 +25,7 @@ export function App() {
         <BookingForm />
       </main>
       <Footer />
-      <StickyBookingBar />
+      {flags.floatingBookingButton && <StickyBookingBar />}
     </>
   );
 }

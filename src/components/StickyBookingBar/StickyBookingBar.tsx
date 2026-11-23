@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Bar, BarButton } from "./StickyBookingBar.styles";
+import { Bar, BarButton, BarSpace } from "./StickyBookingBar.styles";
 
 // The button stays hidden while any of these are on screen: the hero's own buttons
 // (see Hero.tsx) and the booking form itself.
@@ -53,8 +53,11 @@ export function StickyBookingBar() {
   }, []);
 
   return (
-    <Bar ref={barRef} $visible={visible}>
-      <BarButton href="#book">Request a booking</BarButton>
-    </Bar>
+    <>
+      <BarSpace />
+      <Bar ref={barRef} $visible={visible}>
+        <BarButton href="#book">Request a booking</BarButton>
+      </Bar>
+    </>
   );
 }

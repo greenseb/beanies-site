@@ -31,10 +31,6 @@ export const GlobalStyle = createGlobalStyle`
   textarea { padding: 12px; resize: vertical; }
   input::placeholder, textarea::placeholder { color: ${({ theme }) => theme.colors.placeholder}; }
 
-  @media ${({ theme }) => theme.mobile} {
-    body { padding-bottom: 80px; }
-  }
-
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
   }
