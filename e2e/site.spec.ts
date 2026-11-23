@@ -83,6 +83,9 @@ test.describe("full site", () => {
 
       await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight / 2));
       await expect(barLink).toBeVisible();
+      // Wait for the fade and slide in to finish before measuring
+      await expect(barLink.locator("..")).toHaveCSS("opacity", "1");
+      await expect(barLink.locator("..")).toHaveCSS("transform", "none");
       // Floats well clear of the bottom edge (taps right at the edge are caught by iOS Safari's toolbar)
       const box = await barLink.boundingBox();
       expect(page.viewportSize()!.height - (box!.y + box!.height)).toBeGreaterThanOrEqual(48);
