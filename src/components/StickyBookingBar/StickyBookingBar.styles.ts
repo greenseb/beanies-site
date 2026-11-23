@@ -6,15 +6,33 @@ import { ButtonLink } from "../ui";
 export const Bar = styled.div<{ $visible: boolean }>`
   display: none;
   @media ${({ theme }) => theme.mobile} {
-    display: ${({ $visible }) => ($visible ? "flex" : "none")};
+    display: flex;
     justify-content: center;
     position: fixed;
     left: 0;
     right: 0;
     bottom: 50px;
+    /* iOS only: lvh - dvh is the height of Safari's toolbar while it's showing (0 once collapsed).
+       Fixed offsets are measured from the top of the toolbar, so without this the button rises by the
+       toolbar's height when it appears. This keeps it 50px up when collapsed and settles near 16px
+       above the toolbar when expanded. */
+    @supports (-webkit-touch-callout: none) and (height: 100lvh) {
+      bottom: max(16px, calc(50px - (100lvh - 100dvh)));
+    }
     z-index: 40;
     /* Let taps pass through the empty sides to the page */
     pointer-events: none;
+    opacity: ${({ $visible }) => ($visible ? 1 : 0)};
+    transform: ${({ $visible }) => ($visible ? "none" : "translateY(12px)")};
+    visibility: ${({ $visible }) => ($visible ? "visible" : "hidden")};
+    /* visibility flips after the fade on hide so the hidden button is out of the tab order */
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease,
+      visibility 0s linear ${({ $visible }) => ($visible ? "0s" : "0.2s")};
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
   }
 `;
 
