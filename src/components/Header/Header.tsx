@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { assetUrl } from "../../content/assetUrl";
 import { logo } from "../../content/photos";
 import { Bar, Menu, MenuButton, Row } from "./Header.styles";
 import type { NavLinkItem } from "./Header.types";
@@ -44,7 +45,7 @@ export function Header() {
     <Bar>
       <Row>
         <a href="#top" aria-label="Beanies Pet Services, home">
-          <img src={logo.src} alt={logo.alt} />
+          <img src={assetUrl(logo.src)} alt={logo.alt} />
         </a>
         <MenuButton
           ref={buttonRef}
