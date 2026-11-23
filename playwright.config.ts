@@ -15,7 +15,13 @@ export default defineConfig({
     baseURL: `http://localhost:${port}`,
     trace: "on-first-retry",
   },
-  projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
+  projects: [
+    { name: "chromium", use: { ...devices["Desktop Chrome"] } },
+    // Emulated phones: real screen sizes, touch input and user agents. They don't
+    // reproduce browser chrome such as Safari's collapsing toolbar, so still check a real phone.
+    { name: "iphone", use: { ...devices["iPhone 15"] } },
+    { name: "android", use: { ...devices["Pixel 7"] } },
+  ],
   webServer: {
     command: `pnpm dev --port ${port} --strictPort`,
     url: `http://localhost:${port}`,
