@@ -10,6 +10,11 @@ test.describe("coming soon flag", () => {
       await expect(page.getByRole("heading", { name: /coming soon/i })).toBeVisible();
       await expect(page.getByRole("img", { name: /beanies/i })).toBeVisible();
       await expect(page.getByRole("button", { name: /open menu/i })).toHaveCount(0);
+      // Nothing to scroll
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollHeight - document.documentElement.clientHeight,
+      );
+      expect(overflow).toBeLessThanOrEqual(0);
     } else {
       await expect(page.getByRole("heading", { level: 1 })).toHaveText("Care that fits your pet");
       await expect(page.getByRole("heading", { name: /coming soon/i })).toHaveCount(0);
