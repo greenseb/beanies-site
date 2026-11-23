@@ -83,10 +83,9 @@ test.describe("full site", () => {
 
       await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight / 2));
       await expect(barLink).toBeVisible();
-      // Pinned to the bottom of the screen while scrolling mid-page
-      const bar = page.locator("a[href='#book']").last().locator("..");
-      const box = await bar.boundingBox();
-      expect(Math.round(box!.y + box!.height)).toBe(page.viewportSize()!.height);
+      // Floats well clear of the bottom edge (taps right at the edge are caught by iOS Safari's toolbar)
+      const box = await barLink.boundingBox();
+      expect(page.viewportSize()!.height - (box!.y + box!.height)).toBeGreaterThanOrEqual(80);
 
       await page.evaluate(() => window.scrollTo(0, 0));
       await expect(barLink).toBeHidden();
