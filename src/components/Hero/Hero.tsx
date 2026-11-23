@@ -18,7 +18,7 @@ export function Hero() {
           Walks, pop-ins, sitting and pet taxi, tailored to your pet. Small
           mammals are a speciality.
         </Lead>
-        <Actions>
+        <Actions id="hero-actions">
           <ButtonLink href="#book">Request a booking</ButtonLink>
           <ButtonLink $variant="outline" href="#prices">
             View price list
