@@ -5,7 +5,9 @@ import type { PhotoProps } from "./ui.types";
 // Style it with styled(Photo)`...` so the same sizing applies to both.
 export function Photo({ photo, className }: PhotoProps) {
   if (photo.src) {
-    return <img className={className} src={photo.src} alt={photo.alt} />;
+    // Content paths start with "/"; prefix the base so they work under a subpath too.
+    const src = photo.src.replace(/^\//, import.meta.env.BASE_URL);
+    return <img className={className} src={src} alt={photo.alt} />;
   }
   return <PlaceholderBox className={className}>{photo.placeholder}</PlaceholderBox>;
 }
