@@ -71,6 +71,24 @@ test.describe("full site", () => {
     });
   });
 
+  test.describe("sticky booking bar (phone)", () => {
+    test.use({ viewport: { width: 390, height: 800 } });
+
+    test("only shows once the hero buttons have scrolled out of view", async ({ page }) => {
+      await page.goto("/");
+      // The bar is the last #book link in the DOM (after the hero and menu ones). Not getByRole,
+      // which skips it while hidden and would match the hero button instead.
+      const barLink = page.locator('a[href="#book"]').last();
+      await expect(barLink).toBeHidden();
+
+      await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight / 2));
+      await expect(barLink).toBeVisible();
+
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await expect(barLink).toBeHidden();
+    });
+  });
+
   test.describe("booking form", () => {
     async function fillForm(page: import("@playwright/test").Page) {
       await page.getByLabel("Preferred date").fill("Saturday 12 December");
