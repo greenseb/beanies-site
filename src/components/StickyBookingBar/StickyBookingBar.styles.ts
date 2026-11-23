@@ -5,16 +5,14 @@ export const Bar = styled.div<{ $visible: boolean }>`
   display: none;
   @media ${({ theme }) => theme.mobile} {
     display: ${({ $visible }) => ($visible ? "block" : "none")};
-    position: fixed;
-    left: 0;
-    right: 0;
+    /* Sticky, not fixed: on iOS Safari the first tap on a fixed bar near the bottom only expands the toolbar */
+    position: sticky;
     bottom: 0;
     z-index: 40;
     background: ${({ theme }) => theme.colors.navy};
     border-top: 1px solid ${({ theme }) => theme.colors.line};
-    /* 24px sides keep the button's bottom corners inside the iPhone's rounded screen corners.
-       The 56px bottom lifts it clear of the bottom edge on iOS Safari. */
-    padding: 12px 24px 56px;
+    /* 24px sides keep the button's bottom corners inside the iPhone's rounded screen corners */
+    padding: 12px 24px;
   }
 `;
 
