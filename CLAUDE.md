@@ -16,6 +16,7 @@ Vite + React + TypeScript + styled-components, managed with pnpm. See README.md 
 - The design is meant to stay as the original static site: don't change colours, fonts, spacing or copy unless asked.
 - Keep it accessible: menu `aria-expanded`, Escape to close, skip link, form labels and the live status message.
 - Leave the [bracketed] text and photo placeholders for the owner to fill in.
+- Planned work lives in `TODO.md`. Check it before starting, and tick items off (moving them to Done) in the PR that completes them.
 - The booking form endpoint comes from `VITE_FORM_ENDPOINT` (see `.env.example`). Keep the "not connected" message when it's unset.
 
 ## Commits
