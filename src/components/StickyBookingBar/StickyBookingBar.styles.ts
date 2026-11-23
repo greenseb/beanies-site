@@ -12,8 +12,9 @@ export const Bar = styled.div<{ $visible: boolean }>`
     z-index: 40;
     background: ${({ theme }) => theme.colors.navy};
     border-top: 1px solid ${({ theme }) => theme.colors.line};
-    /* Extra bottom space keeps the button's corners clear of the iPhone's rounded screen corners */
-    padding: 12px 16px 28px;
+    /* 24px sides keep the button's bottom corners inside the iPhone's rounded screen corners.
+       Don't raise the bottom padding: on iOS Safari that made the first tap only expand the toolbar. */
+    padding: 12px 24px;
     transform: ${({ $visible }) => ($visible ? "none" : "translateY(100%)")};
     visibility: ${({ $visible }) => ($visible ? "visible" : "hidden")};
     /* visibility flips after the slide on hide so the hidden bar is out of the tab order */
