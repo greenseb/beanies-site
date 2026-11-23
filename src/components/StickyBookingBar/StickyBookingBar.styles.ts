@@ -13,7 +13,8 @@ export const Bar = styled.div<{ $visible: boolean }>`
     background: ${({ theme }) => theme.colors.navy};
     border-top: 1px solid ${({ theme }) => theme.colors.line};
     /* 24px sides keep the button's bottom corners inside the iPhone's rounded screen corners.
-       Don't raise the bottom padding: on iOS Safari that made the first tap only expand the toolbar. */
+       The 56px bottom lifts it clear of the bottom edge on iOS Safari. */
+    padding: 12px 24px 56px;
     padding: 12px 24px;
     transform: ${({ $visible }) => ($visible ? "none" : "translateY(100%)")};
     visibility: ${({ $visible }) => ($visible ? "visible" : "hidden")};
