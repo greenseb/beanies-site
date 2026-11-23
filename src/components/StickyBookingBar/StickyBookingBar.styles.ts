@@ -11,7 +11,7 @@ export const Bar = styled.div<{ $visible: boolean }>`
     position: fixed;
     left: 0;
     right: 0;
-    bottom: 96px;
+    bottom: 50px;
     z-index: 40;
     /* Let taps pass through the empty sides to the page */
     pointer-events: none;
