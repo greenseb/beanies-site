@@ -12,8 +12,8 @@ export const Bar = styled.div<{ $visible: boolean }>`
     z-index: 40;
     background: ${({ theme }) => theme.colors.navy};
     border-top: 1px solid ${({ theme }) => theme.colors.line};
-    /* Clear the iPhone home indicator and rounded screen corners (needs viewport-fit=cover) */
-    padding: 12px max(16px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+    /* Extra bottom space keeps the button's corners clear of the iPhone's rounded screen corners */
+    padding: 12px 16px 28px;
     transform: ${({ $visible }) => ($visible ? "none" : "translateY(100%)")};
     visibility: ${({ $visible }) => ($visible ? "visible" : "hidden")};
     /* visibility flips after the slide on hide so the hidden bar is out of the tab order */
