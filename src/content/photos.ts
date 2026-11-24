@@ -19,6 +19,7 @@ export const galleryPhotos: PhotoSlot[] = [
 ];
 
 export const aboutPhoto: PhotoSlot = {
+  src: "/images/beanies-about.jpg",
   alt: "Describe the photo",
   placeholder: "Photo placeholder: you and your pets",
 };
