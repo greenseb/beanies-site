@@ -13,9 +13,21 @@ export const heroPhoto: PhotoSlot = {
 };
 
 export const galleryPhotos: PhotoSlot[] = [
-  { alt: "Describe the photo", placeholder: "Photo placeholder" },
-  { alt: "Describe the photo", placeholder: "Photo placeholder" },
-  { alt: "Describe the photo", placeholder: "Photo placeholder" },
+  {
+    src: "/images/field-dog.jpg",
+    alt: "Describe the photo",
+    placeholder: "Photo placeholder",
+  },
+  {
+    src: "/images/sausage-dogs.jpg",
+    alt: "Describe the photo",
+    placeholder: "Photo placeholder",
+  },
+  {
+    src: "/images/bella.jpg",
+    alt: "Describe the photo",
+    placeholder: "Photo placeholder",
+  },
 ];
 
 export const aboutPhoto: PhotoSlot = {
