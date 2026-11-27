@@ -77,7 +77,7 @@ test.describe("full site", () => {
   });
 
   test.describe("sticky booking bar (phone)", () => {
-    test.skip(!flags.floatingBookingButton, "Floating booking button is off");
+    test.skip(!flags.bookingForm || !flags.floatingBookingButton, "Floating booking button is off");
     test.use({ viewport: { width: 390, height: 800 } });
 
     test("shows between the hero buttons and the booking form", async ({ page }) => {
@@ -105,14 +105,34 @@ test.describe("full site", () => {
   });
 
   test("has no floating booking button while the flag is off", async ({ page }) => {
-    test.skip(flags.floatingBookingButton, "Floating booking button is on");
+    test.skip(!flags.bookingForm || flags.floatingBookingButton, "Booking form is hidden or floating button is on");
     await page.setViewportSize({ width: 390, height: 800 });
     await page.goto("/");
     // Only the hero and menu links point at the form; a floating button would be a third
     await expect(page.locator('a[href="#book"]')).toHaveCount(2);
   });
 
+  test.describe("contact us (booking form hidden)", () => {
+    test.skip(flags.bookingForm, "Booking form is shown");
+
+    test("hides the form and its links", async ({ page }) => {
+      await page.goto("/");
+      await expect(page.locator("#book")).toHaveCount(0);
+      await expect(page.locator('a[href="#book"]')).toHaveCount(0);
+      await expect(page.getByRole("link", { name: "Request a booking" })).toHaveCount(0);
+    });
+
+    test("the hero button scrolls to the socials in the footer", async ({ page }) => {
+      await page.goto("/");
+      await page.locator("#hero-actions").getByRole("link", { name: "Contact us" }).click();
+      await expect(page).toHaveURL(/#contact$/);
+      await expect(page.getByRole("list", { name: "Get in touch" })).toBeInViewport();
+    });
+  });
+
   test.describe("booking form", () => {
+    test.skip(!flags.bookingForm, "Booking form is hidden");
+
     async function fillForm(page: import("@playwright/test").Page) {
       await page.getByLabel("Preferred date").fill("Saturday 12 December");
       await page.getByLabel("Pet's name").fill("Biscuit");

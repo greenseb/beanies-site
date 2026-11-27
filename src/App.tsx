@@ -22,10 +22,10 @@ export function App() {
         <PriceList />
         <Gallery />
         <About />
-        <BookingForm />
+        {flags.bookingForm && <BookingForm />}
       </main>
       <Footer />
-      {flags.floatingBookingButton && <StickyBookingBar />}
+      {flags.bookingForm && flags.floatingBookingButton && <StickyBookingBar />}
     </>
   );
 }
