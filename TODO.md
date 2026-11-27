@@ -12,7 +12,8 @@ Planned work, newest ideas at the bottom of each section. Tick items off (and mo
 
 ## Before launch
 
-- [ ] Fill in the `[bracketed]` text in `src/components/About/About.tsx` and `src/components/Footer/Footer.tsx` (introduction, areas covered, email, phone).
+- [ ] Fill in the `[bracketed]` text in `src/components/About/About.tsx` (introduction, areas covered).
+- [ ] Fill in the `[bracketed]` WhatsApp number and Facebook page in `src/content/socials.ts` (the footer icon links).
 - [ ] Add the real photos (`src/content/photos.ts`, images in `public/images/`).
 - [ ] Set `VITE_FORM_ENDPOINT` (repo variable for the deploy, and `.env` locally) and send a test booking.
 - [ ] Set `comingSoon` to `false` in `src/content/flags.ts` once ready for customers.
