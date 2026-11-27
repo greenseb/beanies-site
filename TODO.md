@@ -12,7 +12,7 @@ Planned work, newest ideas at the bottom of each section. Tick items off (and mo
 
 ## Before launch
 
-- [ ] Fill in the `[bracketed]` text in `src/components/About/About.tsx` and `src/components/Footer/Footer.tsx` (introduction, areas covered, email, phone).
+- [ ] Fill in the `[bracketed]` text in `src/components/About/About.tsx` (introduction, areas covered).
 - [ ] Add the real photos (`src/content/photos.ts`, images in `public/images/`).
 - [ ] Set `VITE_FORM_ENDPOINT` (repo variable for the deploy, and `.env` locally) and send a test booking.
 - [ ] Set `comingSoon` to `false` in `src/content/flags.ts` once ready for customers.
@@ -30,6 +30,7 @@ Planned work, newest ideas at the bottom of each section. Tick items off (and mo
 
 ## Done
 
+- [x] Footer social icon links and email (#23)
 - [x] Burger menu open and close animation (#4)
 - [x] Coming soon page behind a feature flag (#5)
 - [x] Playwright e2e tests, CI workflow and iPhone and Android profiles (#5, #9)
