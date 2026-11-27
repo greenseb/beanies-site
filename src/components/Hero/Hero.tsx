@@ -1,3 +1,4 @@
+import { flags } from "../../content/flags";
 import { heroPhoto } from "../../content/photos";
 import { ButtonLink } from "../ui";
 import {
@@ -19,7 +20,11 @@ export function Hero() {
           mammals are a speciality.
         </Lead>
         <Actions id="hero-actions">
-          <ButtonLink href="#book">Request a booking</ButtonLink>
+          {flags.bookingForm ? (
+            <ButtonLink href="#book">Request a booking</ButtonLink>
+          ) : (
+            <ButtonLink href="#contact">Contact us</ButtonLink>
+          )}
           <ButtonLink $variant="outline" href="#prices">
             View price list
           </ButtonLink>

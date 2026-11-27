@@ -21,6 +21,7 @@ Planned work, newest ideas at the bottom of each section. Tick items off (and mo
 ## Features
 
 - [ ] Decide on a replacement for the floating booking button, or leave it out (see the bug above).
+- [ ] Bring the booking form back: set `bookingForm` to `true` in `src/content/flags.ts` (hidden for now, the hero button says "Contact us" instead).
 
 ## Ideas / maybe
 

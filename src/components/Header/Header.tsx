@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { assetUrl } from "../../content/assetUrl";
+import { flags } from "../../content/flags";
 import { logo } from "../../content/photos";
 import { Bar, Menu, MenuButton, Row } from "./Header.styles";
 import type { NavLinkItem } from "./Header.types";
 
 const links: NavLinkItem[] = [
   { href: "#prices", label: "Price list" },
-  { href: "#book", label: "Request a booking" },
+  ...(flags.bookingForm ? [{ href: "#book", label: "Request a booking" }] : []),
   { href: "#about", label: "About" },
   { href: "#contact", label: "Contact" },
 ];
